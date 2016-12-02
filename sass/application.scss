@@ -1,0 +1,331 @@
+@import "variables";
+
+body {
+  background-color: $background;
+}
+
+#header {
+  background-color: $primary-color;
+  height: 80px;
+  overflow: visible;
+
+  h1 {
+    position: absolute;
+    top: 9px;
+    left: 78px;
+  }
+
+  h1 a {
+    color: $primary-text;
+  }
+
+  #site-name {
+    a img {
+      height: 23px;
+    }
+  }
+
+  #branding {
+    padding-top: 2px;
+    height: 32px;
+  }
+
+  #user-tools {
+    color: $primary-text;
+
+    a {
+      color: darken($primary-text, 10%);
+    }
+  }
+
+  .tabs {
+    padding: 16px 0;
+    clear: left;
+    background-color: $primary-color;
+
+    ul {
+      position: relative;
+      float: left;
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+
+        position: relative;
+        float: left;
+        margin: 0;
+        padding: 0;
+
+        a {
+          display: block;
+          color: $secondary-text;
+          background-color: $secondary-color;
+
+          padding: 10px 20px;
+
+          border-right: 1px solid darken($secondary-color, 3%);
+          border-bottom: none;
+
+          &:hover {
+            background: lighten($secondary-color, 3%);
+            text-decoration: none;
+          }
+        }
+
+        &.active a {
+          background: $breadcrumb-color;
+          color: $breadcrumb-text;
+        }
+
+        &.active.has-child a {
+          background: $tertiary-color;
+          //color: $breadcrumb-text;
+        }
+
+        &.has-child a {
+            padding-right: 30px;
+        }
+
+        &:first-child a {
+          border-radius: 4px 0 0 0;
+        }
+        &:last-child a {
+          border-radius: 0 4px 0 0;
+        }
+
+        &.active {
+          .arrow {
+            border-top: 5px solid $breadcrumb-text;
+          }
+        }
+
+        .arrow {
+          position: absolute;
+          margin: auto 10px;
+
+          right: 0;
+          top: 0;
+          bottom: 0;
+
+          width: 0;
+          height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-top: 5px solid $secondary-text;
+        }
+      }
+
+      // drop down menu
+      li:hover > ul {
+        display: block
+      }
+
+      ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        padding: 0;
+        z-index: 9;
+        box-shadow: 0px 3px 1px 2px rgba(206,206,214,0.4);
+
+        li {
+          float: none;
+          width: 150px
+        }
+
+        a {
+          line-height: 120%;
+          padding: 10px 15px;
+
+          border-radius: 0 !important;
+          border: none;
+
+        }
+      }
+    }
+
+  }
+}
+
+.login {
+  #header {
+    // fix some of the css for the login page
+    height: 40px !important;
+  }
+
+  div.breadcrumbs {
+    display: none;
+  }
+
+  input[type=submit] {
+    background-color: $primary-button !important;
+    color: $primary-button-text !important;
+  }
+
+  form {
+    .submit-row {
+      background: none !important;
+      border: none !important;
+    }
+  }
+}
+
+#secondary-nav {
+  background-color: $tertiary-color;
+  padding: 0px 40px;
+  height: 40px;
+  overflow: hidden; // FIXME: find a better way of wrapping the 2ndary nav
+  border-bottom: 1px solid darken($tertiary-color, 10%);
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style: none;
+
+      float: left;
+      margin: 0;
+      padding: 0;
+
+      &.active a {
+        font-weight: bold;
+      }
+
+      a {
+        margin: 0;
+
+        display: block;
+        color: $tertiary-text;
+
+        padding: 10px 20px;
+
+        &:hover {
+          color: darken($tertiary-text, 10%);
+        }
+      }
+    }
+  }
+}
+
+div.breadcrumbs {
+  height: 40px;
+
+  background-color: $breadcrumb-color;
+  border-bottom: 1px solid darken($breadcrumb-color, 10%);
+
+  color: $breadcrumb-text;
+
+  // hide the breadcrumb text
+  text-indent: -1000em;
+
+  a {
+    color: $breadcrumb-text;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: darken($breadcrumb-text, 15%);
+  }
+}
+
+ul.messagelist {
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+
+body.dashboard #content h1 {
+  display: none;
+}
+
+#content {
+  h1 {
+    float: none;
+    position: absolute;
+
+    //font-weight: light;
+
+    margin-top: -66px;
+    left: 40px;
+  }
+
+  .object-tools {
+    float: none;
+    position: absolute;
+
+    margin-top: -66px;
+    right: 40px;
+
+    .addlink {
+      background-color: $primary-button;
+      color: $primary-button-text;
+    }
+  }
+
+  #content-main {
+    .module {
+      //background-color: $breadcrumb-color;
+      border: 1px solid darken($breadcrumb-color, 5%);
+      border-radius: 3px;
+
+      h2, caption {
+        background: $focus-color;
+        color: $focus-text;
+        border-bottom: 1px solid darken($focus-color, 5%);
+
+        a {
+          color: $focus-text;
+        }
+      }
+    }
+
+    #changelist {
+      a {
+        color: $link-color;
+        &:hover {
+          color: $link-color-hover;
+        }
+      }
+
+      &.module {
+        border: none;
+      }
+    }
+
+    form {
+      .submit-row {
+        background-color: $breadcrumb-color;
+        border: 1px solid darken($breadcrumb-color, 5%);
+
+        input {
+          background-color: $secondary-button;
+          color: $secondary-button-text;
+        }
+        .default {
+          background-color: $primary-button;
+          color: $primary-button-text;
+        }
+      }
+    }
+
+    .messagelist {
+      float: none;
+      margin-bottom: 20px;
+
+      li {
+        padding: 10px 10px 10px 40px;
+
+        &.error, &.warning, &.success {
+          background-position-x: 12px;
+        }
+
+      }
+    }
+
+  }
+}
