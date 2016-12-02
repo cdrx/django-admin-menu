@@ -67,7 +67,11 @@ You can use the same `menu_group` on multiple `ModelAdmin` classes and they will
 
 ## Theming
 
+There are no built in themes, but the style is easy to adjust by editing the variables in `sass/_variables.scss` and rebuilding the style sheet. A grunt task is included in the project source.
 
+In a later release, I'll add the option to switch between some built in themes.
+
+These are some sample screenshots after adjusting the `$primary-color`, `$secondary-color` and `$tertiary-color` variables in the SASS:
 
 ![screenshot](screenshots/ui-dark.png)
 ![screenshot](screenshots/ui-green.png)
