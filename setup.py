@@ -7,9 +7,12 @@ setup(name='django-admin-menu',
       author='Chris Rose',
       license='MIT',
       packages=['admin_menu'],
+      install_requires=[
+          'libsass'
+      ],
       zip_safe=False,
-      keywords = ['django', 'admin', 'theme', 'interface', 'menu', 'navigation'],
-      include_package_data = True,
+      keywords=['django', 'admin', 'theme', 'interface', 'menu', 'navigation'],
+      include_package_data=True,
       classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',

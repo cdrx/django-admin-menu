@@ -1,11 +1,13 @@
 {% extends "admin/base.html" %}
 
-{% load staticfiles i18n custom_admin_menu custom_admin_logo %}
+{% load staticfiles i18n custom_admin_menu custom_admin_logo custom_admin_css %}
 
 {% block blockbots %}
     {{ block.super }}
-    <script src="{% static "admin-menu.min.js" %}"></script>
-    <link href="{% static "admin-menu.min.css" %}" rel='stylesheet' />
+    <style type="text/css">
+        {% get_custom_admin_css as css %}
+        {{ css }}
+    </style>
 {% endblock %}
 
 {% block nav-global %}

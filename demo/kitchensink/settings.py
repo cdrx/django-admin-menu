@@ -115,6 +115,12 @@ STATIC_URL = '/static/'
 
 ADMIN_LOGO = 'logo.png'
 
+ADMIN_STYLE = {
+    'primary-color': '#164B36',
+    'secondary-color': '#092117',
+    'tertiary-color': '#51B48E',
+}
+
 MENU_WEIGHT = {
     'Auth': 100
 }
