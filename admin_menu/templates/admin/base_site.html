@@ -2,6 +2,8 @@
 
 {% load staticfiles i18n custom_admin_menu custom_admin_logo custom_admin_css %}
 
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
 {% block blockbots %}
     {{ block.super }}
     <style type="text/css">
