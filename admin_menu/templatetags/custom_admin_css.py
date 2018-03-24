@@ -61,7 +61,7 @@ def get_sass_source():
     )
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_custom_admin_css():
     global _compiled_sass
     if not _compiled_sass:
