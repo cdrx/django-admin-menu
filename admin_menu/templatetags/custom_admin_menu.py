@@ -126,7 +126,7 @@ def make_menu_group(title, children=None, weight=None):
     return MenuGroup(title=title, children=children, weight=weight or get_group_weight(title))
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_admin_menu(context):
     request = context['request']
     apps = get_app_list(context, True)
