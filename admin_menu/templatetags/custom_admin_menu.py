@@ -6,6 +6,7 @@ from django.conf import settings
 from django.urls import resolve, reverse, NoReverseMatch
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
+from django.apps import apps
 
 
 register = template.Library()
