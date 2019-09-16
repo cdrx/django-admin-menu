@@ -180,21 +180,19 @@ def get_admin_menu(context):
                 )
                 group.children.append(submenu)
 
-    for title, submenu in menu.items():
-        # sort the submenus by weight
-        submenu.children.sort(key=lambda x: x.weight)
-        for idx, sub in enumerate(submenu.children):
-            if idx == 0:
-                menu[title].url = sub.url
-            if request.path == sub.url.split("?")[0]:
-                sub.active = True
-                menu[title].active = True
-            if sub.url != '/' and request.path.startswith(sub.url):
-                sub.active = True
-            if sub.active:
-                submenu.active = True
-
     # sort the menu by weight
     menu = OrderedDict(sorted(menu.items(), key=lambda x: x[1].weight))
+    
+    for title in menu.keys():
+        menu[title].children.sort(key=lambda x: x.weight)
+        
+        for idx in range(len(menu[title].children)):
+            url = menu[title].children[idx].url
+            
+            if idx == 0:
+                menu[title].url = url    
+            if request.path == url.split("?")[0]:
+                menu[title].active = True
+                menu[title].children[idx].active = True
 
     return menu
