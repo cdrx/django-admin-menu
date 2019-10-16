@@ -8,7 +8,7 @@
     {{ block.super }}
     <style type="text/css">
         {% get_custom_admin_css as css %}
-        {{ css }}
+        {{ css|safe }}
     </style>
 {% endblock %}
 
