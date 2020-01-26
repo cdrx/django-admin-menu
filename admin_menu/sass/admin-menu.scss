@@ -4,6 +4,7 @@ body {
   background-color: $background;
 }
 
+/*
 #header {
   background-color: $primary-color;
   height: 80px;
@@ -37,11 +38,17 @@ body {
       color: darken($primary-text, 10%);
     }
   }
+*/
+
+#admin_menu_container {
+  background-color: $primary-color;
+  padding: 20px 20px 0px 20px;
 
   .tabs {
-    padding: 16px 0;
+    /*padding: 16px 0;*/
     clear: left;
     background-color: $primary-color;
+    overflow: hidden;
 
     ul {
       position: relative;
