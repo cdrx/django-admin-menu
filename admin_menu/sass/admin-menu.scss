@@ -43,12 +43,13 @@ body {
 #admin_menu_container {
   background-color: $primary-color;
   padding: 20px 20px 0px 20px;
+  height: 40px;
 
   .tabs {
     /*padding: 16px 0;*/
     clear: left;
     background-color: $primary-color;
-    overflow: hidden;
+    /*overflow: hidden;*/
 
     ul {
       position: relative;
@@ -58,7 +59,6 @@ body {
 
       li {
         list-style: none;
-
         position: relative;
         float: left;
         margin: 0;
@@ -107,6 +107,10 @@ body {
           }
         }
 
+        &:hover ul {
+          display: block;
+        }
+
         .arrow {
           position: absolute;
           margin: auto 10px;
@@ -136,7 +140,7 @@ body {
         background: #fff;
         padding: 0;
         z-index: 9;
-        box-shadow: 0px 3px 1px 2px rgba(206,206,214,0.4);
+        /* box-shadow: 0px 3px 1px 2px rgba(206,206,214,0.4); */
 
         li {
           float: none;
