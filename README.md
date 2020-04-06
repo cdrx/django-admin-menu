@@ -143,7 +143,9 @@ ADMIN_STYLE = {
     'secondary-button': '#999',
     'secondary-button-text': 'white',
     'link-color': '#333',
-    'link-color-hover': 'lighten($link-color, 20%)'
+    'link-color-hover': 'lighten($link-color, 20%)',
+    'logo-width': 'auto',
+    'logo-height': '35px'
 }
 ```
 
@@ -154,6 +156,11 @@ First release, works.
 
 #### [1.1] - 2016-12-16
 Added theming support.
+
+#### [1.2] - 2020-04-06
+* Added support for Django 3.0+.
+* Made the `ADMIN_LOGO` setting optional.
+* Allowed adjusting admin logo size with `logo-width` and `logo-height` style settings.
 
 ## License
 
