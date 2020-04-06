@@ -49,12 +49,12 @@ class KitchenSink(models.Model):
     hidden_charfield = models.CharField(max_length=64, blank=True)
     hidden_charfield2 = models.CharField(max_length=64, blank=True)
 
-    country = models.ForeignKey(Country, related_name='foreign_key_country')
+    country = models.ForeignKey(Country, related_name='foreign_key_country', on_delete=models.CASCADE)
     linked_foreign_key = models.ForeignKey(Country, limit_choices_to={
-        'continent__name': 'Europe'}, related_name='foreign_key_linked')
+        'continent__name': 'Europe'}, related_name='foreign_key_linked', on_delete=models.CASCADE)
     raw_id_field = models.ForeignKey(Country,
                                      help_text='Regular raw ID field',
-                                     null=True, blank=True)
+                                     null=True, blank=True, on_delete=models.SET_NULL)
 
     enclosed1 = models.CharField(max_length=64, blank=True)
     enclosed2 = models.CharField(max_length=64, blank=True)
@@ -65,7 +65,7 @@ class KitchenSink(models.Model):
 
 # Inline model for KitchenSink
 class Fridge(models.Model):
-    kitchensink = models.ForeignKey(KitchenSink)
+    kitchensink = models.ForeignKey(KitchenSink, on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
     type = models.SmallIntegerField(choices=TYPE_CHOICES3)
     description = models.TextField(blank=True)
@@ -81,7 +81,7 @@ class Fridge(models.Model):
 
 # Inline model for KitchenSink
 class Microwave(models.Model):
-    kitchensink = models.ForeignKey(KitchenSink)
+    kitchensink = models.ForeignKey(KitchenSink, on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
     type = models.SmallIntegerField(choices=TYPE_CHOICES3, default=2,
                                     help_text='Choose wisely')

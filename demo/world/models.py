@@ -16,7 +16,7 @@ class Country(models.Model):
     code = models.CharField(max_length=2,
                             help_text='ISO 3166-1 alpha-2 - two character country code')
     independence_day = models.DateField(blank=True, null=True)
-    continent = models.ForeignKey(Continent, null=True)
+    continent = models.ForeignKey(Continent, null=True, on_delete=models.SET_NULL)
     area = models.BigIntegerField(blank=True, null=True)
     population = models.BigIntegerField(blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
@@ -34,7 +34,7 @@ class Country(models.Model):
 
 class City(models.Model):
     name = models.CharField(max_length=64)
-    country = models.ForeignKey(Country)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
     capital = models.BooleanField()
     area = models.BigIntegerField(blank=True, null=True)
     population = models.BigIntegerField(blank=True, null=True)
