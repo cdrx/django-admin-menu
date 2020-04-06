@@ -6,7 +6,7 @@ from world.models import City
 class CityAdmin(admin.ModelAdmin):
     search_fields = ('name', 'country__name')
     list_display = ('name', 'country', 'capital', 'continent')
-    list_filter = ('capital', )
+    list_filter = ('capital',)
     fieldsets = [
         (None, {'fields': ['name', 'country', 'capital']}),
         ('Statistics', {
@@ -19,4 +19,3 @@ class CityAdmin(admin.ModelAdmin):
 
 
 admin.site.register(City, CityAdmin)
-

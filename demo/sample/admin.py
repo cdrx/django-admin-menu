@@ -16,7 +16,7 @@ class CountryInline(admin.StackedInline):
 class ContinentAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_display = ('name', 'countries')
-    inlines = (CountryInline, )
+    inlines = (CountryInline,)
 
     def countries(self, obj):
         return len(obj.country_set.all())
@@ -37,7 +37,7 @@ class CountryAdmin(admin.ModelAdmin):
     date_hierarchy = 'independence_day'
     list_select_related = True
 
-    inlines = (CityInline, )
+    inlines = (CityInline,)
 
     fieldsets = [
         (None, {
@@ -51,7 +51,6 @@ class CountryAdmin(admin.ModelAdmin):
         ('Architecture', {
             'fields': ['architecture']}),
     ]
-
 
 
 class FridgeInline(admin.TabularInline):
@@ -71,29 +70,29 @@ class KitchenSinkAdmin(admin.ModelAdmin):
     inlines = (FridgeInline, MicrowaveInline)
     search_fields = ['name']
     radio_fields = {"horizontal_choices": admin.HORIZONTAL,
-                    'vertical_choices': admin.VERTICAL}
-    list_editable = ('boolean', )
-    list_filter = ('choices', 'date' )
+        'vertical_choices': admin.VERTICAL}
+    list_editable = ('boolean',)
+    list_filter = ('choices', 'date')
     readonly_fields = ('readonly_field',)
     raw_id_fields = ('raw_id_field',)
     fieldsets = [
         (None, {'fields': ['name', 'help_text', 'textfield',
-                           ('multiple_in_row', 'multiple2'),
-                           'file', 'readonly_field']}),
+            ('multiple_in_row', 'multiple2'),
+            'file', 'readonly_field']}),
         ('Date and time', {
             'fields': ['date_widget', 'datetime_widget']}),
 
         ('Foreign key relations',
-         {'description': 'Original select and linked select feature',
-          'fields': ['country', 'linked_foreign_key', 'raw_id_field']}),
+        {'description': 'Original select and linked select feature',
+            'fields': ['country', 'linked_foreign_key', 'raw_id_field']}),
 
         ('EnclosedInput widget',
-         {
-             'fields': ['enclosed1', 'enclosed2']}),
+        {
+            'fields': ['enclosed1', 'enclosed2']}),
 
         ('Boolean and choices',
-         {'fields': ['boolean', 'boolean_with_help', 'choices',
-                     'horizontal_choices', 'vertical_choices']}),
+        {'fields': ['boolean', 'boolean_with_help', 'choices',
+            'horizontal_choices', 'vertical_choices']}),
 
         ('Collapsed settings', {
             'classes': ('collapse',),
