@@ -1,39 +1,38 @@
 import os.path
 from collections import OrderedDict
 
-from django.conf import settings
-from django import template
-
 import sass
+from django import template
+from django.conf import settings
 
 register = template.Library()
 
 _compiled_sass = None
 
+
 def sass_variable_defaults():
     return (
-        ('background',              'white'),
-        ('primary-color',           '#205280'),
-        ('primary-text',            '#d6d5d2'),
-        ('secondary-color',         '#3B75AD'),
-        ('secondary-text',          'white'),
-        ('tertiary-color',          '#F2F9FC'),
-        ('tertiary-text',           'black'),
-        ('breadcrumb-color',        'whitesmoke'),
-        ('breadcrumb-text',         'black'),
-        ('focus-color',             '#eaeaea'),
-        ('focus-text',              '#666'),
-        ('primary-button',          '#26904A'),
-        ('primary-button-text',     'white'),
-        ('secondary-button',        '#999'),
-        ('secondary-button-text',   'white'),
-        ('link-color',              '#333'),
-        ('link-color-hover',        'lighten($link-color, 20%)')
+        ('background', 'white'),
+        ('primary-color', '#205280'),
+        ('primary-text', '#d6d5d2'),
+        ('secondary-color', '#3B75AD'),
+        ('secondary-text', 'white'),
+        ('tertiary-color', '#F2F9FC'),
+        ('tertiary-text', 'black'),
+        ('breadcrumb-color', 'whitesmoke'),
+        ('breadcrumb-text', 'black'),
+        ('focus-color', '#eaeaea'),
+        ('focus-text', '#666'),
+        ('primary-button', '#26904A'),
+        ('primary-button-text', 'white'),
+        ('secondary-button', '#999'),
+        ('secondary-button-text', 'white'),
+        ('link-color', '#333'),
+        ('link-color-hover', 'lighten($link-color, 20%)')
     )
 
 
 def sass_variables():
-
     variables = OrderedDict(sass_variable_defaults())
     custom = getattr(settings, 'ADMIN_STYLE', {})
     for v, c in custom.items():

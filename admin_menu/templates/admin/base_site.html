@@ -16,36 +16,36 @@
     {% get_admin_menu as menu %}
 
     {% if menu %}
-    <div class="tabs">
-        <ul>
-            {% for title, item in menu.items %}
-            <li class="{% if item.active %}active{% endif %}{% if item.children|length > 1 %} has-child{% endif %}">
-                <a href="{{ item.url }}">{{ item.title }} {% if item.children|length > 1 %}<span class="arrow"></span>{% endif %}</a>
+        <div class="tabs">
+            <ul>
+                {% for title, item in menu.items %}
+                    <li class="{% if item.active %}active{% endif %}{% if item.children|length > 1 %} has-child{% endif %}">
+                        <a href="{{ item.url }}">{{ item.title }} {% if item.children|length > 1 %}<span class="arrow"></span>{% endif %}</a>
 
-                {% if item.children|length > 1 %}
-                <ul>
-                    {% for sub in item.children %}
-                        <li ><a href="{{ sub.url }}">{{ sub.title }}</a></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
+                        {% if item.children|length > 1 %}
+                            <ul>
+                                {% for sub in item.children %}
+                                    <li><a href="{{ sub.url }}">{{ sub.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
 
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endif %}
 
     {% for title, item in menu.items %}
         {% if item.active and item.children|length > 1 %}
-        </div>
-        <div id="secondary-nav">
-            <ul>
-            {% for sub in item.children %}
-                <li class="{% if sub.active %}active{% endif %}"><a href="{{ sub.url }}">{{ sub.title }}</a></li>
-            {% endfor %}
-            </ul>
-        </div>
+            </div>
+            <div id="secondary-nav">
+                <ul>
+                    {% for sub in item.children %}
+                        <li class="{% if sub.active %}active{% endif %}"><a href="{{ sub.url }}">{{ sub.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endif %}
     {% endfor %}
 
@@ -54,6 +54,6 @@
 {% block branding %}
     {% get_custom_logo as brandmark %}
     {% if brandmark %}
-    <img src="{% static brandmark %}" id="branding" />
+        <img src="{% static brandmark %}" id="branding"/>
     {% endif %}
 {% endblock %}

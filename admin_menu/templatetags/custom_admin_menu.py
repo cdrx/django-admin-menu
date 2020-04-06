@@ -1,12 +1,11 @@
-from collections import namedtuple, OrderedDict
+from collections import OrderedDict
 
 from django import template
-from django.contrib import admin
 from django.conf import settings
+from django.contrib import admin
 from django.urls import resolve, reverse, NoReverseMatch
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
-
 
 register = template.Library()
 
@@ -19,7 +18,7 @@ class MenuItem:
     active = False
 
     def __init__(self, *args, **kwargs):
-        for k,v in kwargs.items():
+        for k, v in kwargs.items():
             setattr(self, k, v)
         if self.children is None:
             self.children = list()
@@ -56,7 +55,7 @@ def get_app_list(context, order=True):
         try:
             has_module_perms = model_admin.has_module_permission(request)
         except AttributeError:
-            has_module_perms = request.user.has_module_perms(app_label) # Fix Django < 1.8 issue
+            has_module_perms = request.user.has_module_perms(app_label)  # Fix Django < 1.8 issue
 
         if has_module_perms:
             perms = model_admin.get_model_perms(request)
