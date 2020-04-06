@@ -10,25 +10,16 @@ body {
   padding: 10px 40px 0 40px;
   overflow: visible;
 
-  h1 {
-    position: absolute;
-    top: 9px;
-    left: 78px;
-
-    a {
+  #branding {
+    #site-name a {
       color: $primary-text;
     }
-  }
 
-  #site-name {
-    a img {
-      height: 23px;
+    img {
+      margin-top: 5px;
+      height: $logo-height;
+      width: $logo-width;
     }
-  }
-
-  #branding {
-    padding-top: 2px;
-    height: 32px;
   }
 
   #user-tools {

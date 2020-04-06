@@ -28,7 +28,9 @@ def sass_variable_defaults():
         ('secondary-button', '#999'),
         ('secondary-button-text', 'white'),
         ('link-color', '#333'),
-        ('link-color-hover', 'lighten($link-color, 20%)')
+        ('link-color-hover', 'lighten($link-color, 20%)'),
+        ('logo-width', 'auto'),
+        ('logo-height', '35px'),
     )
 
 

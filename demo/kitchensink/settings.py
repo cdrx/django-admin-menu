@@ -112,7 +112,9 @@ ADMIN_LOGO = 'logo.png'
 ADMIN_STYLE = {
     'primary-color': '#2B3746',
     'secondary-color': '#354151',
-    'tertiary-color': '#F2F9FC'
+    'tertiary-color': '#F2F9FC',
+    'logo-width': 'auto',
+    'logo-height': '35px'
 }
 
 MENU_WEIGHT = {

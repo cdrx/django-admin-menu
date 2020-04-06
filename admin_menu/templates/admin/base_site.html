@@ -15,9 +15,9 @@
 {% block branding %}
     {% get_custom_logo as brandmark %}
     {% if brandmark %}
-        <img src="{% static brandmark %}" id="branding" alt="logo"/>
+        <img src="{% static brandmark %}" alt="logo"/>
     {% else %}
-        {{ block.super }}
+        <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
     {% endif %}
 {% endblock %}
 
