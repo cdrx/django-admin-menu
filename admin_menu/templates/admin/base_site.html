@@ -12,6 +12,15 @@
     </style>
 {% endblock %}
 
+{% block branding %}
+    {% get_custom_logo as brandmark %}
+    {% if brandmark %}
+        <img src="{% static brandmark %}" id="branding" alt="logo"/>
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
+
 {% block nav-global %}
     {% get_admin_menu as menu %}
 
@@ -51,9 +60,3 @@
 
 {% endblock %}
 
-{% block branding %}
-    {% get_custom_logo as brandmark %}
-    {% if brandmark %}
-        <img src="{% static brandmark %}" id="branding"/>
-    {% endif %}
-{% endblock %}

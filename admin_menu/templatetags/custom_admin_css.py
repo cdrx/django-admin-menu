@@ -62,6 +62,10 @@ def get_sass_source():
 
 @register.simple_tag
 def get_custom_admin_css():
+    if settings.DEBUG:
+        return sass.compile(string=get_sass_source())
+
+    # cache the css in production
     global _compiled_sass
     if not _compiled_sass:
         _compiled_sass = sass.compile(string=get_sass_source())

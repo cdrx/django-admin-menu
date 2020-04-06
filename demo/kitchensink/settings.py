@@ -110,9 +110,9 @@ STATIC_URL = '/static/'
 ADMIN_LOGO = 'logo.png'
 
 ADMIN_STYLE = {
-    'primary-color': '#164B36',
-    'secondary-color': '#092117',
-    'tertiary-color': '#51B48E',
+    'primary-color': '#2B3746',
+    'secondary-color': '#354151',
+    'tertiary-color': '#F2F9FC'
 }
 
 MENU_WEIGHT = {
