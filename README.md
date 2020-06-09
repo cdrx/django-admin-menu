@@ -2,6 +2,8 @@
 
 An alternative theme for the Django admin that has a horizontal navigation bar with drop down menus for your models. Fully themeable from `settings.py`.
 
+[![Downloads](https://pepy.tech/badge/django-admin-menu)](https://pepy.tech/project/django-admin-menu)
+
 ![screenshot](screenshots/drop-down.png)
 
 ## Installation
