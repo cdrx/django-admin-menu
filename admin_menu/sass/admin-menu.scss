@@ -324,3 +324,9 @@ body.dashboard #content h1 {
 
   }
 }
+
+.paginator a:link, .paginator a:visited, .paginator a:hover {
+  background: $breadcrumb-color;
+  color: $breadcrumb-text;
+  border: 1px solid darken($breadcrumb-color, 5%);
+}
