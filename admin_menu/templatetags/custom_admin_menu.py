@@ -6,6 +6,7 @@ from django.contrib import admin
 from django.urls import resolve, reverse, NoReverseMatch
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
+from django.apps import apps
 
 register = template.Library()
 
@@ -23,6 +24,8 @@ class MenuItem:
         if self.children is None:
             self.children = list()
 
+    def __repr__(self):
+        return "<MenuItem url=%s title=%s>" % (self.url, self.title)
 
 class MenuGroup(MenuItem):
     pass
@@ -179,21 +182,24 @@ def get_admin_menu(context):
                 )
                 group.children.append(submenu)
 
-    for title, submenu in menu.items():
-        # sort the submenus by weight
-        submenu.children.sort(key=lambda x: x.weight)
-        for idx, sub in enumerate(submenu.children):
-            if idx == 0:
-                menu[title].url = sub.url
-            if request.path == sub.url.split("?")[0]:
-                sub.active = True
-                menu[title].active = True
-            if sub.url != '/' and request.path.startswith(sub.url):
-                sub.active = True
-            if sub.active:
-                submenu.active = True
-
     # sort the menu by weight
     menu = OrderedDict(sorted(menu.items(), key=lambda x: x[1].weight))
+
+    for title in reversed(list(menu.keys())):
+        menu[title].children.sort(key=lambda x: x.weight)
+
+        for idx, sub in enumerate(menu[title].children):
+            if idx == 0:
+                menu[title].url = sub.url
+            if sub.url == reverse('admin:index'):
+                if request.path == sub.url:
+                    print("active2")
+                    sub.active = True
+                    menu[title].active = True
+            else:
+                if request.path.startswith(sub.url):
+                    print("active1")
+                    sub.active = True
+                    menu[title].active = True
 
     return menu

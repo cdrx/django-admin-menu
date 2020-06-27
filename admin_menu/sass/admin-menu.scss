@@ -6,33 +6,27 @@ body {
 
 #header {
   background-color: $primary-color;
-  flex-wrap: wrap;
-  padding: 10px 40px 0 40px;
-  overflow: visible;
+
+  #site-name a, #user-tools {
+    color: darken($primary-text, 10%);
+  }
 
   #branding {
-    #site-name a {
-      color: $primary-text;
-    }
-
     img {
-      margin-top: 5px;
+      margin-top: 8px;
       height: $logo-height;
       width: $logo-width;
     }
   }
+}
 
-  #user-tools {
-    color: $primary-text;
-
-    a {
-      color: darken($primary-text, 10%);
-    }
-  }
+#admin_menu_container {
+  background-color: $primary-color;
+  padding: 10px 40px 0 40px;
+  height: 40px;
 
   .tabs {
-    flex-basis: 100%;
-    padding: 16px 0 0 0;
+    clear: left;
     background-color: $primary-color;
 
     ul {
@@ -43,7 +37,6 @@ body {
 
       li {
         list-style: none;
-
         position: relative;
         float: left;
         margin: 0;
@@ -72,7 +65,6 @@ body {
 
         &.active.has-child a {
           background: $tertiary-color;
-          //color: $breadcrumb-text;
         }
 
         &.has-child a {
@@ -91,6 +83,10 @@ body {
           .arrow {
             border-top: 5px solid $breadcrumb-text;
           }
+        }
+
+        &:hover ul {
+          display: block;
         }
 
         .arrow {
@@ -121,8 +117,8 @@ body {
         left: -1px;
         background: #fff;
         padding: 0;
-        z-index: 99;
-        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+        z-index: 9;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 
         li {
           float: none;
@@ -135,11 +131,9 @@ body {
 
           border-radius: 0 !important;
           border: none;
-
         }
       }
     }
-
   }
 }
 
@@ -323,10 +317,4 @@ body.dashboard #content h1 {
     }
 
   }
-}
-
-.paginator a:link, .paginator a:visited, .paginator a:hover {
-  background: $breadcrumb-color;
-  color: $breadcrumb-text;
-  border: 1px solid darken($breadcrumb-color, 5%);
 }
