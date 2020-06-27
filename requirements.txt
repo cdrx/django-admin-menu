@@ -1,1 +1,1 @@
-libsass
+libsass~=0.20
