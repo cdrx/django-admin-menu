@@ -24,6 +24,8 @@ class MenuItem:
         if self.children is None:
             self.children = list()
 
+    def __repr__(self):
+        return "<MenuItem url=%s title=%s>" % (self.url, self.title)
 
 class MenuGroup(MenuItem):
     pass
@@ -182,17 +184,22 @@ def get_admin_menu(context):
 
     # sort the menu by weight
     menu = OrderedDict(sorted(menu.items(), key=lambda x: x[1].weight))
-    
-    for title in menu.keys():
+
+    for title in reversed(list(menu.keys())):
         menu[title].children.sort(key=lambda x: x.weight)
-        
-        for idx in range(len(menu[title].children)):
-            url = menu[title].children[idx].url
-            
+
+        for idx, sub in enumerate(menu[title].children):
             if idx == 0:
-                menu[title].url = url    
-            if request.path == url.split("?")[0]:
-                menu[title].active = True
-                menu[title].children[idx].active = True
+                menu[title].url = sub.url
+            if sub.url == reverse('admin:index'):
+                if request.path == sub.url:
+                    print("active2")
+                    sub.active = True
+                    menu[title].active = True
+            else:
+                if request.path.startswith(sub.url):
+                    print("active1")
+                    sub.active = True
+                    menu[title].active = True
 
     return menu

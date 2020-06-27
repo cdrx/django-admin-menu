@@ -4,52 +4,26 @@ body {
   background-color: $background;
 }
 
-/*
 #header {
   background-color: $primary-color;
-  height: 80px;
-  overflow: visible;
 
-  h1 {
-    position: absolute;
-    top: 9px;
-    left: 78px;
-  }
-
-  h1 a {
+  #site-name a, #user-tools {
     color: $primary-text;
-  }
-
-  #site-name {
-    a img {
-      height: 23px;
-    }
   }
 
   #branding {
-    padding-top: 2px;
-    height: 32px;
+    margin-top: 8px;
   }
-
-  #user-tools {
-    color: $primary-text;
-
-    a {
-      color: darken($primary-text, 10%);
-    }
-  }
-*/
+}
 
 #admin_menu_container {
   background-color: $primary-color;
-  padding: 20px 20px 0px 20px;
+  padding: 10px 40px 0 40px;
   height: 40px;
 
   .tabs {
-    /*padding: 16px 0;*/
     clear: left;
     background-color: $primary-color;
-    /*overflow: hidden;*/
 
     ul {
       position: relative;
@@ -87,16 +61,16 @@ body {
 
         &.active.has-child a {
           background: $tertiary-color;
-          //color: $breadcrumb-text;
         }
 
         &.has-child a {
-            padding-right: 30px;
+          padding-right: 30px;
         }
 
         &:first-child a {
           border-radius: 4px 0 0 0;
         }
+
         &:last-child a {
           border-radius: 0 4px 0 0;
         }
@@ -136,11 +110,11 @@ body {
         display: none;
         position: absolute;
         top: 100%;
-        left: 0;
+        left: -1px;
         background: #fff;
         padding: 0;
         z-index: 9;
-        /* box-shadow: 0px 3px 1px 2px rgba(206,206,214,0.4); */
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 
         li {
           float: none;
@@ -153,11 +127,9 @@ body {
 
           border-radius: 0 !important;
           border: none;
-
         }
       }
     }
-
   }
 }
 
@@ -298,6 +270,7 @@ body.dashboard #content h1 {
     #changelist {
       a {
         color: $link-color;
+
         &:hover {
           color: $link-color-hover;
         }
@@ -317,6 +290,7 @@ body.dashboard #content h1 {
           background-color: $secondary-button;
           color: $secondary-button-text;
         }
+
         .default {
           background-color: $primary-button;
           color: $primary-button-text;
