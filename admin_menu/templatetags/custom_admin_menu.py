@@ -84,7 +84,7 @@ def get_app_list(context, order=True):
                     app_dict[app_label]['models'].append(model_dict)
                 else:
                     try:
-                        name = apps.get_app_config(app_label).verbose_name
+                        name = model._meta.app_config.verbose_name
                     except NameError:
                         name = app_label.title()
                     app_dict[app_label] = {

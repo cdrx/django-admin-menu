@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'sample',
-    'world'
+    'world.apps.WorldApp'
 ]
 
 MIDDLEWARE = [

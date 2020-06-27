@@ -164,6 +164,10 @@ Added theming support.
 * Made the `ADMIN_LOGO` setting optional.
 * Allowed adjusting admin logo size with `logo-width` and `logo-height` style settings.
 
+#### [unreleased]
+* Reworked the pagination style to look more inline with the table style
+* Fixed an issue where the `verbose_name` from the `AppConfig` class wasn't used in the menu
+
 ## License
 
 MIT
