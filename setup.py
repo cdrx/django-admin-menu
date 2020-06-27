@@ -16,7 +16,7 @@ setup(name='django-admin-menu',
       license='MIT',
       packages=['admin_menu'],
       install_requires=[
-          'libsass'
+          'libsass>=0.20,<0.21'
       ],
       zip_safe=False,
       keywords=['django', 'admin', 'theme', 'interface', 'menu', 'navigation'],
@@ -28,8 +28,6 @@ setup(name='django-admin-menu',
           'Intended Audience :: Developers',
           'Operating System :: OS Independent',
           'Programming Language :: Python',
-          'Programming Language :: Python :: 2',
-          'Programming Language :: Python :: 2.7',
           'Programming Language :: Python :: 3',
           'Programming Language :: Python :: 3.5',
       ],
