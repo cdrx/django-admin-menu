@@ -8,11 +8,15 @@ body {
   background-color: $primary-color;
 
   #site-name a, #user-tools {
-    color: $primary-text;
+    color: darken($primary-text, 10%);
   }
 
   #branding {
-    margin-top: 8px;
+    img {
+      margin-top: 8px;
+      height: $logo-height;
+      width: $logo-width;
+    }
   }
 }
 

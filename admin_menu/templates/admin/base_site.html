@@ -27,7 +27,7 @@
                     {% if item.children|length > 1 %}
                     <ul>
                         {% for sub in item.children %}
-                            <li ><a href="{{ sub.url }}">{{ sub.title }}</a></li>
+                            <li><a href="{{ sub.url }}">{{ sub.title }}</a></li>
                         {% endfor %}
                     </ul>
                     {% endif %}
