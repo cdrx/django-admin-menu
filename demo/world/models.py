@@ -3,6 +3,7 @@ from django.db import models
 
 class Continent(models.Model):
     name = models.CharField(max_length=256)
+    code = models.CharField(max_length=2, help_text='Two letter continent code')
 
     def __str__(self):
         return self.name
