@@ -168,9 +168,12 @@ Added theming support.
 * Reworked the pagination style to look more inline with the table style
 * Fixed an issue where the `verbose_name` from the `AppConfig` class wasn't used in the menu
 
-#### [unreleased]
+#### [1.4] - 2020-11-16
 * Fixed a bug where the Dashboard icon would be highlighted even if another tab was active
 * Display the admin title as text if no logo is defined in the settings
+
+
+#### [unreleased]
 
 ## License
 
