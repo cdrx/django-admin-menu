@@ -4,6 +4,15 @@ body {
   background-color: $background;
 }
 
+#container {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+#toggle-nav-sidebar, #nav-sidebar {
+  display: none !important;
+}
+
 #header {
   background-color: $primary-color;
 
