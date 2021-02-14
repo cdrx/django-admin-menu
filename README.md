@@ -172,6 +172,8 @@ Added theming support.
 * Fixed a bug where the Dashboard icon would be highlighted even if another tab was active
 * Display the admin title as text if no logo is defined in the settings
 
+#### [1.5] - 2021-02-14
+* Fixed compatibility with Django 3+ (thanks to arturgsb)
 
 #### [unreleased]
 
