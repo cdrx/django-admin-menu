@@ -7,9 +7,11 @@ from django.urls import resolve, reverse, NoReverseMatch
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
 from django.apps import apps
+from django import VERSION
 
 register = template.Library()
 
+SUPPORTS_VIEW_PERM = True if (VERSION[0] == 2 and VERSION[1] > 0) or (VERSION[0] > 2) else False
 
 class MenuItem:
     url = None
@@ -46,7 +48,7 @@ def get_admin_site(context):
         pass
 
     return admin.site
-
+    
 
 def get_app_list(context, order=True):
     admin_site = get_admin_site(context)
@@ -73,11 +75,18 @@ def get_app_list(context, order=True):
                     'perms': perms,
                     'model_admin': model_admin,
                 }
-                if perms.get('change', False):
-                    try:
-                        model_dict['admin_url'] = reverse('admin:%s_%s_changelist' % info, current_app=admin_site.name)
-                    except NoReverseMatch:
-                        pass
+                if SUPPORTS_VIEW_PERM:
+                    if perms.get('view', False):
+                        try:
+                            model_dict['admin_url'] = reverse('admin:%s_%s_changelist' % info, current_app=admin_site.name)
+                        except NoReverseMatch:
+                            pass
+                else:
+                    if perms.get('change', False):
+                        try:
+                            model_dict['admin_url'] = reverse('admin:%s_%s_changelist' % info, current_app=admin_site.name)
+                        except NoReverseMatch:
+                            pass
                 if perms.get('add', False):
                     try:
                         model_dict['add_url'] = reverse('admin:%s_%s_add' % info, current_app=admin_site.name)
@@ -144,8 +153,12 @@ def get_admin_menu(context):
             continue
 
         for model in app['models']:
-            if not model['perms']['change']:
-                continue
+            if SUPPORTS_VIEW_PERM:
+                if not model['perms']['view']:
+                    continue
+            else:        
+                if not model['perms']['change']:
+                    continue
 
             model_admin = model['model_admin']
             title = capfirst(getattr(model_admin, 'menu_group', app['name']))
