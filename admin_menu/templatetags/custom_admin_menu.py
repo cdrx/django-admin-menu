@@ -7,8 +7,11 @@ from django.urls import resolve, reverse, NoReverseMatch
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
 from django.apps import apps
+from django import VERSION
 
 register = template.Library()
+
+PERM = 'view' if (VERSION[0] == 2 and VERSION[1] > 0) or (VERSION[0] > 2) else 'change'
 
 
 class MenuItem:
@@ -46,7 +49,7 @@ def get_admin_site(context):
         pass
 
     return admin.site
-
+    
 
 def get_app_list(context, order=True):
     admin_site = get_admin_site(context)
@@ -73,7 +76,7 @@ def get_app_list(context, order=True):
                     'perms': perms,
                     'model_admin': model_admin,
                 }
-                if perms.get('change', False):
+                if perms.get(PERM, False):
                     try:
                         model_dict['admin_url'] = reverse('admin:%s_%s_changelist' % info, current_app=admin_site.name)
                     except NoReverseMatch:
@@ -144,7 +147,7 @@ def get_admin_menu(context):
             continue
 
         for model in app['models']:
-            if not model['perms']['change']:
+            if not model['perms'][PERM]:
                 continue
 
             model_admin = model['model_admin']
