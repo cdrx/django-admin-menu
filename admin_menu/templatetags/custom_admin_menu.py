@@ -1,3 +1,4 @@
+import logging
 from collections import OrderedDict
 
 from django import template
@@ -196,12 +197,12 @@ def get_admin_menu(context):
                 menu[title].url = sub.url
             if sub.url == reverse('admin:index'):
                 if request.path == sub.url:
-                    print("active2")
+                    logging.debug("active2")
                     sub.active = True
                     menu[title].active = True
             else:
                 if request.path.startswith(sub.url):
-                    print("active1")
+                    logging.debug("active1")
                     sub.active = True
                     menu[title].active = True
 
