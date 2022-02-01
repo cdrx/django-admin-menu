@@ -175,6 +175,11 @@ Added theming support.
 #### [1.5] - 2021-02-14
 * Fixed compatibility with Django 3+ (thanks to arturgsb)
 
+#### [1.6] - 2022-02-01
+* Fixed compatibility with Django 4
+* Added support for Django's view permission (thanks @cobia)
+* Fixed menu height on mobile (thanks @mojek)
+
 #### [unreleased]
 
 ## License
